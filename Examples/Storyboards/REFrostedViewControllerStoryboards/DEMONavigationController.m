@@ -17,13 +17,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+    
+    UIScreenEdgePanGestureRecognizer *leftEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
+    leftEdgeGesture.edges = UIRectEdgeLeft;
+//    leftEdgeGesture.delegate = self;
+    [self.view addGestureRecognizer:leftEdgeGesture];
 }
 
 #pragma mark -
 #pragma mark Gesture recognizer
 
-- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+- (void)handleLeftEdgeGesture:(UIPanGestureRecognizer *)sender
 {
     // Dismiss keyboard (optional)
     //
